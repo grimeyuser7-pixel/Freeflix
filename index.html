@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b0b0f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="FreeFlix">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="stylesheet" href="style.css">
+<title>FreeFlix</title>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><span class="logo">F</span><span>FreeFlix</span></div>
+  <button id="searchBtn" class="iconBtn" aria-label="Search">⌕</button>
+</header>
+
+<main>
+  <section id="homeView" class="view active">
+    <div id="hero"></div>
+    <section>
+      <div class="sectionHead"><h2>Browse</h2><button class="textBtn" id="allGenresBtn">See all</button></div>
+      <div id="genreChips" class="chips"></div>
+    </section>
+    <section>
+      <div class="sectionHead"><h2>Featured</h2></div>
+      <div id="movieGrid" class="grid"></div>
+    </section>
+  </section>
+
+  <section id="searchView" class="view">
+    <div class="searchBox"><span>⌕</span><input id="searchInput" placeholder="Search movies..." autocomplete="off"><button id="clearSearch">×</button></div>
+    <div id="searchResults" class="grid"></div>
+  </section>
+
+  <section id="downloadsView" class="view">
+    <div class="sectionHead"><h2>Downloads</h2><span id="storageText" class="muted"></span></div>
+    <div id="downloadsList"></div>
+  </section>
+
+  <section id="settingsView" class="view">
+    <div class="settingsCard">
+      <h2>FreeFlix</h2>
+      <p class="muted">Free, legal movies from public-domain or appropriately licensed sources.</p>
+      <div class="settingRow"><span>Downloaded movies</span><strong id="downloadCount">0</strong></div>
+      <div class="settingRow"><span>Storage used</span><strong id="storageText2">0 MB</strong></div>
+      <button class="dangerBtn" id="clearDownloads">Delete all downloads</button>
+    </div>
+    <div class="settingsCard">
+      <h3>About offline playback</h3>
+      <p class="muted">Downloads are stored on this device. Availability and storage limits depend on your browser/iPhone.</p>
+    </div>
+  </section>
+</main>
+
+<nav class="tabbar">
+  <button class="tab active" data-view="homeView"><span>⌂</span><small>Home</small></button>
+  <button class="tab" data-view="searchView"><span>⌕</span><small>Search</small></button>
+  <button class="tab" data-view="downloadsView"><span>↓</span><small>Downloads</small></button>
+  <button class="tab" data-view="settingsView"><span>⚙</span><small>Settings</small></button>
+</nav>
+
+<div id="detailModal" class="modal hidden">
+  <div class="modalPanel">
+    <button class="closeBtn" id="closeDetail">×</button>
+    <img id="detailPoster" class="detailPoster" alt="">
+    <div class="detailBody">
+      <div id="detailGenre" class="pill"></div>
+      <h1 id="detailTitle"></h1>
+      <p id="detailMeta" class="muted"></p>
+      <p id="detailDescription"></p>
+      <div class="actions"><button id="watchBtn" class="primaryBtn">▶ Watch</button><button id="downloadBtn" class="secondaryBtn">↓ Download</button></div>
+      <div id="downloadStatus"></div>
+      <p id="rightsNote" class="tiny"></p>
+    </div>
+  </div>
+</div>
+
+<div id="playerModal" class="modal hidden">
+  <div class="playerPanel">
+    <button class="closeBtn" id="closePlayer">×</button>
+    <video id="videoPlayer" controls playsinline preload="metadata"></video>
+    <h3 id="playerTitle"></h3>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
